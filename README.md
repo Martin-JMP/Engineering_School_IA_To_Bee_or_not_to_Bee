@@ -1,11 +1,7 @@
-# Data-Analysis-AI-and-Optimization-Project-To-bee-or-not-to-bee
-
-[Data Analysis and AI Project Final Report.pdf](https://github.com/user-attachments/files/15593560/Data.Analysis.and.AI.Project.pdf)
-
-
 # Data Analysis and AI Project
 **To bee or not to bee**
 
+[Data Analysis and AI Project Final Report.pdf](https://github.com/user-attachments/files/15593560/Data.Analysis.and.AI.Project.pdf)
 Submitted on 5 June 2024
 
 ## Members of the project
@@ -30,7 +26,7 @@ Submitted on 5 June 2024
     - [Texture features](#texture-features)
     - [A tried feature: Flower type](#a-tried-feature-flower-type)
     - [Our full dataset](#our-full-dataset)
-3. [Part 2: Data visualization](#part-2-data-visualization)
+3. [Part 2: Data Visualization](#part-2-data-visualization)
     - [Visualization](#visualization)
     - [Principal Component Analysis Projection](#principal-component-analysis-projection)
     - [Other projections](#other-projections)
@@ -127,40 +123,83 @@ A final feature we tried to compute, but could not get through, is the flower ty
 ### Our full dataset
 We have combined all these features into a full dataset for further analysis.
 
-## Part 2: Data visualization
+## Part 2: Data Visualization
 ### Visualization
-We use various methods to visualize the data and understand the distribution of features.
+To better understand the distribution and relationships within our data, we employed various visualization techniques. These visualizations help identify patterns, anomalies, and insights that guide our further analysis and model building.
+
+- **Histograms**: We plotted histograms for each feature to observe their distributions. This helped us understand the spread and central tendency of the data.
+- **Pairwise Scatter Plots**: Scatter plots between pairs of features helped us see potential correlations and clusters in the data.
+- **Heatmaps**: Correlation heatmaps were used to identify relationships between features. High correlation values indicate features that are potentially redundant or provide similar information.
 
 ### Principal Component Analysis Projection
-PCA is used to reduce the dimensionality of our dataset for better visualization.
+Principal Component Analysis (PCA) is a dimensionality reduction technique that transforms our high-dimensional data into a lower-dimensional space while preserving as much variance as possible. This helps in visualizing the data in 2D or 3D plots, making it easier to identify clusters and patterns.
 
-### Other projections
-We explore other non-linear projection methods to understand the data better.
+- We applied PCA to our dataset and plotted the first two principal components.
+- This visualization showed how well-separated the different classes of insects are based on the extracted features.
+- PCA also helped in identifying the most significant features contributing to the variance in the data.
+
+### Other Projections
+Apart from PCA, we explored other non-linear dimensionality reduction methods to capture more complex relationships in the data.
+
+- **t-SNE (t-distributed Stochastic Neighbor Embedding)**: t-SNE is particularly good at preserving local structure in the data and can reveal clusters that PCA might miss. We applied t-SNE to our dataset and visualized the results.
+- **UMAP (Uniform Manifold Approximation and Projection)**: UMAP is another powerful technique for non-linear dimensionality reduction. It tends to produce more meaningful global structures compared to t-SNE. We used UMAP to visualize our data and compared it with the PCA and t-SNE results.
 
 ## Part 3: Machine Learning and Deep Learning
-### 2 supervised methods that are neither deep learning nor ensemble learning
-We test two supervised learning methods on our dataset.
+### 2 Supervised Methods that are Neither Deep Learning nor Ensemble Learning
+We implemented and evaluated two traditional supervised learning methods on our dataset.
 
-### 1 supervised ensemble learning method
-We implement an ensemble learning method for classification.
+- **Support Vector Machines (SVM)**: SVMs are effective for high-dimensional spaces and are commonly used for classification tasks. We trained an SVM classifier on our features and evaluated its performance.
+- **K-Nearest Neighbors (KNN)**: KNN is a simple, instance-based learning method. We used KNN to classify the insects based on their extracted features and evaluated its accuracy.
 
-### At least 2 clustering methods
-We explore two clustering methods to group similar insects.
+### 1 Supervised Ensemble Learning Method
+Ensemble learning methods combine multiple models to improve performance. We implemented the following ensemble method:
 
-### At least 1 supervised neural network using your own features
-We train a supervised neural network using the features we extracted.
+- **Random Forest**: Random Forest is an ensemble method that uses multiple decision trees to improve classification accuracy and control overfitting. We trained a Random Forest classifier and assessed its performance on the dataset.
 
-### A supervised method of your choosing trained over optimally auto-encoded features based on your extracted features
-We detail our auto-encoder architecture and training process.
+### At Least 2 Clustering Methods
+Clustering helps in grouping similar data points without prior knowledge of the labels. We explored the following clustering methods:
 
-### Prediction phase with a batch of test images
-We use our trained models to predict the classes of a batch of test images.
+- **K-Means Clustering**: We applied K-Means clustering to our dataset to identify natural groupings of insects based on the extracted features. The optimal number of clusters was determined using the Elbow method.
+- **Agglomerative Hierarchical Clustering**: This method builds a hierarchy of clusters by recursively merging or splitting them. We used dendrograms to visualize the clustering process and determine the optimal number of clusters.
+
+### At Least 1 Supervised Neural Network Using Your Own Features
+Neural networks can capture complex relationships in the data. We trained the following neural network model:
+
+- **Feedforward Neural Network**: Using the extracted features as inputs, we designed and trained a feedforward neural network. The architecture included input layers corresponding to our features, several hidden layers with ReLU activations, and an output layer with softmax activation for classification. The model was trained using backpropagation and evaluated on a validation set.
+
+### A Supervised Method of Your Choosing Trained Over Optimally Auto-encoded Features Based on Your Extracted Features
+Autoencoders are used for unsupervised learning of efficient codings. We trained an autoencoder and used the encoded features for classification.
+
+- **Autoencoder**: We designed an autoencoder with an encoder part that compresses the feature space into a lower-dimensional representation and a decoder part that reconstructs the input from the encoded representation.
+- **Classification**: The encoded features from the autoencoder were then used to train a supervised classifier. We experimented with different classifiers such as logistic regression, SVM, and neural networks to determine the best-performing model.
+
+### Prediction Phase with a Batch of Test Images
+After training our models, we evaluated their performance on a separate batch of test images to simulate real-world usage.
+
+- **Test Images**: The test set consisted of 97 images that were not part of the training set.
+- **Prediction**: Each model was used to predict the class of insects in the test images. The predictions were compared with the ground truth labels to evaluate accuracy, precision, recall, and F1-score.
+- **Ensemble Prediction**: We also combined predictions from multiple models using voting techniques to improve overall performance.
 
 ### Bonus
-Additional features or methods we explored during the project.
+During the project, we explored additional features and methods that provided further insights or improvements.
+
+- **Ensemble of Autoencoders**: We experimented with combining multiple autoencoders to capture different aspects of the data.
+- **Advanced Feature Engineering**: We explored additional texture features, shape descriptors, and color histograms that were not part of the initial feature set.
 
 ## Conclusion
-Summary of our findings and the effectiveness of the methods we used.
+Through this project, we successfully developed a comprehensive pipeline for classifying pollinator insects using both traditional and advanced machine learning techniques. By extracting meaningful features from high-resolution images and leveraging various visualization, clustering, and classification methods, we achieved a high level of accuracy in distinguishing different types of insects.
+
+Our findings demonstrate the effectiveness of combining domain-specific feature extraction with powerful machine learning algorithms. The use of PCA, t-SNE, and UMAP provided valuable insights into the data structure, while supervised learning methods, including neural networks and ensemble methods, delivered robust classification performance.
+
+Future work could explore real-time insect monitoring systems, integrating these models into mobile applications or IoT devices for ecological research and conservation efforts. Our project contributes to the ongoing efforts in preserving pollinator populations and supports biodiversity through accurate and automated insect classification.
 
 ## Sources
-List of references and sources used throughout the project.
+- [OpenCV documentation](https://opencv.org/)
+- [NumPy documentation](https://numpy.org/)
+- [scikit-learn documentation](https://scikit-learn.org/)
+- [PCA and t-SNE](https://jakevdp.github.io/PythonDataScienceHandbook/)
+- [Random Forest](https://link.springer.com/article/10.1023/A:1010933404324)
+- [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering)
+- [Autoencoders](https://www.deeplearningbook.org/)
+- [TensorFlow documentation](https://www.tensorflow.org/)
+- [PyTorch documentation](https://pytorch.org/)
