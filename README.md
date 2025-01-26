@@ -6,7 +6,7 @@
 
 Submitted on 5 June 2024
 
-Graded: 19/20
+Mark: 19/20
 
 ## Members of the project
 - Martin JONCOURT
