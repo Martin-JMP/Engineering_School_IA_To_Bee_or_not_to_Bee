@@ -9,7 +9,7 @@ Submitted on 5 June 2024
 Mark: 19/20
 
 ## Members of the project
-- Martin JONCOURT
+- Martin JMP
 - Lucas SAYAG
 - Chao ZHAO
 - David LOISEL
